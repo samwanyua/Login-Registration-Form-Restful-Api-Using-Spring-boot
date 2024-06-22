@@ -30,7 +30,19 @@ public class UserController {
     public String register(@ModelAttribute User user){
         System.out.println("Register request: " + user);
         User registeredUser = userService.registerUser(user.getLogin(), user.getPassword(), user.getEmail());
-        return registeredUser == null ? "error_page" : "redirect/login";
+        return registeredUser == null ? "errorPage" : "redirect/login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute User user){
+        System.out.println("Login request: " + user);
+        User authenticated = userService.authentication(user.getLogin(), user.getPassword());
+        if(authenticated != null){
+            return "personal";
+        }
+        else{
+            return "errorPage";
+        }
     }
 
 }
