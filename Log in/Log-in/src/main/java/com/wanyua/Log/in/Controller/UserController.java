@@ -1,9 +1,18 @@
 package com.wanyua.Log.in.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class UserController {
+    @GetMapping("/register")
+    public String getRegisterPage() {
+        return "register";
+    }
+
+    @GetMapping("/login")
+    public String getLogIn(){
+        return "login";
+    }
 
 }
