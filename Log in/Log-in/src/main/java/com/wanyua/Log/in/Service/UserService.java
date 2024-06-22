@@ -22,4 +22,10 @@ public class UserService {
             return null;
         }
     }
+
+    public User authentication(String login, String password){
+        return userRepository.findByIdAndPassword(login,password)
+                .orElse(null);
+    }
+
 }
